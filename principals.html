@@ -11,10 +11,9 @@
   <div id="site-chrome"></div>
 
   <header class="page-header" data-accent="orange">
-    <button onclick="history.back()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-mid,#666);padding:0 0 12px 0;display:flex;align-items:center;gap:6px;direction:rtl;" aria-label="חזרה לדף הקודם">&#x2190; חזרה</button>
     <div class="breadcrumb">
       <a href="index.html">דף הבית</a>
-      <span class="sep">›</span>
+      <span class="sep">‹</span>
       <span>מסלול מנהלים</span>
     </div>
     <span class="page-eyebrow"><span data-icon="principals"></span>מסלול ייעודי</span>
@@ -23,7 +22,7 @@
     <div class="page-header-bar bar-orange"></div>
   </header>
 
-  <main class="content-area">
+  <main class="content-area" id="main-content">
 
     <!-- סקירת קורס -->
     <div class="section-group">
@@ -63,7 +62,7 @@
       <div class="acc-list">
 
         <div class="acc-item" data-tone="orange">
-          <div class="acc-header" onclick="Site.toggle(this)">
+          <button class="acc-header" onclick="Site.toggle(this)" type="button">
             <div class="acc-header-right">
               <div class="acc-num">1</div>
               <div>
@@ -72,7 +71,7 @@
               </div>
             </div>
             <div class="acc-arrow"><span data-icon="chevron"></span></div>
-          </div>
+          </button>
           <div class="acc-body">
             <div class="file-grid">
               <a href="03_מנהלים/02_מצגות_לפי_מפגש/מנהלים - מנטורים למנהלים מפגש ראשון - מצגת__cb74bc23.pdf" target="_blank" class="file-card">
@@ -96,7 +95,7 @@
         </div>
 
         <div class="acc-item" data-tone="orange">
-          <div class="acc-header" onclick="Site.toggle(this)">
+          <button class="acc-header" onclick="Site.toggle(this)" type="button">
             <div class="acc-header-right">
               <div class="acc-num">2</div>
               <div>
@@ -105,7 +104,7 @@
               </div>
             </div>
             <div class="acc-arrow"><span data-icon="chevron"></span></div>
-          </div>
+          </button>
           <div class="acc-body">
             <div class="file-grid">
               <a href="03_מנהלים/02_מצגות_לפי_מפגש/מנהלים - מצגת קוד אתי חוזה__5f07e324.pptx" target="_blank" class="file-card">
@@ -121,7 +120,7 @@
         </div>
 
         <div class="acc-item" data-tone="orange">
-          <div class="acc-header" onclick="Site.toggle(this)">
+          <button class="acc-header" onclick="Site.toggle(this)" type="button">
             <div class="acc-header-right">
               <div class="acc-num">3</div>
               <div>
@@ -130,7 +129,7 @@
               </div>
             </div>
             <div class="acc-arrow"><span data-icon="chevron"></span></div>
-          </div>
+          </button>
           <div class="acc-body">
             <div class="file-grid">
               <a href="03_מנהלים/02_מצגות_לפי_מפגש/מנהלים - מיומנויות מנטוריות - הובלה קשובה__1f6b054f.pdf" target="_blank" class="file-card">
@@ -146,7 +145,7 @@
         </div>
 
         <div class="acc-item" data-tone="orange">
-          <div class="acc-header" onclick="Site.toggle(this)">
+          <button class="acc-header" onclick="Site.toggle(this)" type="button">
             <div class="acc-header-right">
               <div class="acc-num">4</div>
               <div>
@@ -155,7 +154,7 @@
               </div>
             </div>
             <div class="acc-arrow"><span data-icon="chevron"></span></div>
-          </div>
+          </button>
           <div class="acc-body">
             <div class="file-grid">
               <a href="03_מנהלים/02_מצגות_לפי_מפגש/מנהלים - מצגת ראפור__cb5cd710.pptx" target="_blank" class="file-card">
@@ -171,7 +170,7 @@
         </div>
 
         <div class="acc-item" data-tone="orange">
-          <div class="acc-header" onclick="Site.toggle(this)">
+          <button class="acc-header" onclick="Site.toggle(this)" type="button">
             <div class="acc-header-right">
               <div class="acc-num">5</div>
               <div>
@@ -180,7 +179,7 @@
               </div>
             </div>
             <div class="acc-arrow"><span data-icon="chevron"></span></div>
-          </div>
+          </button>
           <div class="acc-body">
             <div class="file-grid">
               <a href="03_מנהלים/02_מצגות_לפי_מפגש/מנהלים - מנטורים למנהלים מפגש 4 מצגת__96c3da99.pptx" target="_blank" class="file-card">
@@ -192,7 +191,7 @@
         </div>
 
         <div class="acc-item" data-tone="orange">
-          <div class="acc-header" onclick="Site.toggle(this)">
+          <button class="acc-header" onclick="Site.toggle(this)" type="button">
             <div class="acc-header-right">
               <div class="acc-num">6</div>
               <div>
@@ -201,7 +200,7 @@
               </div>
             </div>
             <div class="acc-arrow"><span data-icon="chevron"></span></div>
-          </div>
+          </button>
           <div class="acc-body">
             <div class="file-grid">
               <a href="03_מנהלים/02_מצגות_לפי_מפגש/מנהלים - מנטורים למנהלים מפגש 6 - מצגת__b57a2a7d.pptx" target="_blank" class="file-card">
@@ -213,7 +212,7 @@
         </div>
 
         <div class="acc-item" data-tone="orange">
-          <div class="acc-header" onclick="Site.toggle(this)">
+          <button class="acc-header" onclick="Site.toggle(this)" type="button">
             <div class="acc-header-right">
               <div class="acc-num">7</div>
               <div>
@@ -222,7 +221,7 @@
               </div>
             </div>
             <div class="acc-arrow"><span data-icon="chevron"></span></div>
-          </div>
+          </button>
           <div class="acc-body">
             <div class="file-grid">
               <a href="03_מנהלים/02_מצגות_לפי_מפגש/מנהלים - מפגש 8 ימי שלישי הקשבה ואומץ 1.0__6f6f82a3.pptx" target="_blank" class="file-card">
@@ -238,7 +237,7 @@
         </div>
 
         <div class="acc-item" data-tone="orange">
-          <div class="acc-header" onclick="Site.toggle(this)">
+          <button class="acc-header" onclick="Site.toggle(this)" type="button">
             <div class="acc-header-right">
               <div class="acc-num">8</div>
               <div>
@@ -247,7 +246,7 @@
               </div>
             </div>
             <div class="acc-arrow"><span data-icon="chevron"></span></div>
-          </div>
+          </button>
           <div class="acc-body">
             <div class="file-grid">
               <a href="03_מנהלים/03_דפי_עבודה_וחומרים/מנהלים - באיזה אופן המודל של קוטר יכול לקדם אותי כמנטור__128f1f07.pptx" target="_blank" class="file-card">
@@ -263,7 +262,7 @@
         </div>
 
         <div class="acc-item" data-tone="orange">
-          <div class="acc-header" onclick="Site.toggle(this)">
+          <button class="acc-header" onclick="Site.toggle(this)" type="button">
             <div class="acc-header-right">
               <div class="acc-num">9</div>
               <div>
@@ -272,7 +271,7 @@
               </div>
             </div>
             <div class="acc-arrow"><span data-icon="chevron"></span></div>
-          </div>
+          </button>
           <div class="acc-body">
             <div class="file-grid">
               <a href="03_מנהלים/02_מצגות_לפי_מפגש/מנהלים - מצגת מפגש 10 יומי שלישי__cd688ab5.pptx" target="_blank" class="file-card">
@@ -358,42 +357,42 @@
         <span class="sec-count">12 תמונות</span>
       </div>
       <div class="photo-grid">
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251104_160803__3a7f7857.jpg" alt="תיעוד 04.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251104_160810__82b77f5b.jpg" alt="תיעוד 04.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251104_160813__73dad379.jpg" alt="תיעוד 04.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251104_160817__dc15eabb.jpg" alt="תיעוד 04.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251104_160822__3154e8e6.jpg" alt="תיעוד 04.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251113_153234__4cd31fcc.jpg" alt="תיעוד 13.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251113_153242__0e5f4b72.jpg" alt="תיעוד 13.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251113_153249__ae4c6850.jpg" alt="תיעוד 13.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251113_153256__8874b24d.jpg" alt="תיעוד 13.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251113_153308__dfe44f57.jpg" alt="תיעוד 13.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251113_153316__4361faca.jpg" alt="תיעוד 13.11.2025" loading="lazy" />
-        </div>
-        <div class="photo-thumb" onclick="Site.openLightbox(this)">
+        </button>
+        <button class="photo-thumb" onclick="Site.openLightbox(this)" type="button">
           <img src="03_מנהלים/06_תמונות_ותיעוד/מנהלים - 20251113_153322__b94e99ac.jpg" alt="תיעוד 13.11.2025" loading="lazy" />
-        </div>
+        </button>
       </div>
     </div>
 

@@ -1,8 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    Avney Rosha — מרחב מנטורים
-   Shared JS · v2.0
-   Injects site chrome (top strip + navbar + footer) and
-   populates icons across all pages from a single source.
+   Shared JS · v2.1 (UX fixes: hamburger, a11y, search, scroll-top)
 ═══════════════════════════════════════════════════════════ */
 
 (function () {
@@ -43,10 +41,16 @@
     book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v18H6.5a2.5 2.5 0 0 0 0 5H20"/><path d="M6.5 7H20M6.5 11H20"/></svg>',
 
     // Utility
+    // LEFT-pointing arrow for RTL "forward/enter" links
     arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>',
     download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0-4-4m4 4 4-4M5 20h14"/></svg>',
-    chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>',
-    info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>'
+    // LEFT-pointing chevron (RTL-correct: collapsed = ‹, opens to ↓ via rotate(-90deg))
+    chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>',
+    info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>',
+    // Up arrow for scroll-to-top
+    arrowUp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>',
+    // Search icon
+    search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="m21 21-4.35-4.35"/></svg>'
   };
 
   // ── Nav items (single source of truth) ──────────────────
@@ -66,6 +70,7 @@
     ).join('');
 
     return `
+      <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
       <div class="site-strip">
         <div class="strip-lockup">
           <div class="strip-logo"><img src="State_of_Israel_Ministry_of_Education.png" alt="מדינת ישראל · משרד החינוך" /></div>
@@ -88,7 +93,16 @@
             <span>מנהלים ומפקחים</span>
           </div>
         </div>
-        <div class="nav-links">${links}</div>
+        <div class="nav-links" id="main-nav-links">${links}</div>
+        <button
+          class="nav-hamburger"
+          id="nav-hamburger"
+          aria-label="פתח תפריט ניווט"
+          aria-expanded="false"
+          aria-controls="main-nav-links"
+        >
+          <span></span><span></span><span></span>
+        </button>
       </nav>
     `;
   }
@@ -126,7 +140,6 @@
   // ── Auto-add doc-lines inside .file-doc ─────────────────
   function decorateFileDocs(root) {
     (root || document).querySelectorAll('.file-doc').forEach(el => {
-      // skip if already decorated
       if (el.querySelector('.file-doc-lines, .file-doc-badge')) return;
       const type = (el.getAttribute('data-type') || 'doc').toLowerCase();
       const isVideo = (type === 'mp4' || type === 'video');
@@ -155,6 +168,128 @@
     });
   }
 
+  // ── Hamburger toggle (mobile nav) ───────────────────────
+  function initHamburger() {
+    const btn = document.getElementById('nav-hamburger');
+    const menu = document.getElementById('main-nav-links');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = this.classList.toggle('open');
+      this.setAttribute('aria-expanded', isOpen);
+      this.setAttribute('aria-label', isOpen ? 'סגור תפריט ניווט' : 'פתח תפריט ניווט');
+      menu.classList.toggle('mobile-open', isOpen);
+    });
+
+    // Close when a nav link is clicked
+    menu.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'פתח תפריט ניווט');
+        menu.classList.remove('mobile-open');
+      }
+    });
+
+    // Close on outside click
+    document.addEventListener('click', function (e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('mobile-open');
+      }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && btn.classList.contains('open')) {
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('mobile-open');
+        btn.focus();
+      }
+    });
+  }
+
+  // ── Scroll-to-top button ────────────────────────────────
+  function initScrollToTop() {
+    const btn = document.createElement('button');
+    btn.className = 'scroll-top-btn';
+    btn.setAttribute('aria-label', 'חזרה לראש העמוד');
+    btn.innerHTML = I.arrowUp;
+    document.body.appendChild(btn);
+
+    function onScroll() {
+      btn.classList.toggle('visible', window.scrollY > 400);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    btn.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  // ── File search (appears on pages with 10+ file cards) ──
+  function initFileSearch() {
+    const allCards = document.querySelectorAll('.file-card');
+    if (allCards.length < 10) return;
+
+    const contentArea = document.querySelector('.content-area');
+    if (!contentArea) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'file-search-wrapper';
+    wrapper.innerHTML = `
+      <div class="file-search">
+        ${I.search}
+        <input
+          type="search"
+          id="file-search-input"
+          placeholder="חיפוש קבצים..."
+          aria-label="חיפוש קבצים בעמוד"
+          autocomplete="off"
+        />
+        <span class="file-search-count" id="file-search-count" aria-live="polite"></span>
+      </div>
+    `;
+    contentArea.insertBefore(wrapper, contentArea.firstChild);
+
+    const input  = document.getElementById('file-search-input');
+    const countEl = document.getElementById('file-search-count');
+
+    input.addEventListener('input', function () {
+      const q = this.value.trim().toLowerCase();
+      let visible = 0;
+
+      allCards.forEach(card => {
+        const name = (card.querySelector('.file-name') || card).textContent.toLowerCase();
+        const show = !q || name.includes(q);
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      // Hide entire section-groups when all their direct file-cards are hidden
+      document.querySelectorAll('.section-group').forEach(group => {
+        const direct = group.querySelectorAll(':scope > .file-grid > .file-card');
+        const accCards = group.querySelectorAll('.acc-body .file-card');
+        const totalInGroup = direct.length + accCards.length;
+        if (totalInGroup === 0) return;
+        const hiddenInGroup = group.querySelectorAll('.file-card[style*="none"]').length;
+        group.style.display = hiddenInGroup === totalInGroup ? 'none' : '';
+      });
+
+      countEl.textContent = q ? `${visible} תוצאות` : '';
+    });
+  }
+
+  // ── Accordion toggle helper ──────────────────────────────
+  // Works both when called with a button element (new) or header div (legacy)
+  function toggleAccordion(el) {
+    const item = el.closest('.acc-item');
+    if (item) item.classList.toggle('open');
+  }
+
   // ── Public mount(activePage) ────────────────────────────
   const Site = {
     icons: I,
@@ -167,35 +302,44 @@
       populateIcons(document);
       decorateFileDocs(document);
       decorateFileCards(document);
+      initHamburger();
+      initScrollToTop();
+      initFileSearch();
     },
     populateIcons,
     decorateFileDocs,
-    decorateFileCards
-  };
-
-  // ── Accordion helper (sessions / topics) ────────────────
-  Site.toggle = function (header) {
-    const item = header.closest('.acc-item');
-    if (item) item.classList.toggle('open');
+    decorateFileCards,
+    // Keep legacy toggle call working
+    toggle: toggleAccordion
   };
 
   // ── Lightbox (used by principals) ───────────────────────
   Site.openLightbox = function (thumb) {
-    const img = thumb.querySelector('img');
+    const img = thumb.querySelector('img') || (thumb.tagName === 'IMG' ? thumb : null);
     if (!img) return;
     let lb = document.getElementById('site-lightbox');
     if (!lb) {
       lb = document.createElement('div');
       lb.id = 'site-lightbox';
       lb.className = 'lightbox';
-      lb.innerHTML = '<button class="lightbox-close" aria-label="סגירה">✕</button><img alt="" />';
-      lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lightbox-close')) Site.closeLightbox(); });
+      lb.setAttribute('role', 'dialog');
+      lb.setAttribute('aria-modal', 'true');
+      lb.setAttribute('aria-label', 'תמונה מוגדלת');
+      lb.innerHTML = '<button class="lightbox-close" aria-label="סגירה (Escape)">✕</button><img alt="" />';
+      lb.addEventListener('click', e => {
+        if (e.target === lb || e.target.classList.contains('lightbox-close')) Site.closeLightbox();
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') Site.closeLightbox();
+      });
       document.body.appendChild(lb);
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') Site.closeLightbox(); });
     }
     lb.querySelector('img').src = img.src;
+    lb.querySelector('img').alt = img.alt || 'תמונה';
     lb.classList.add('open');
+    lb.querySelector('.lightbox-close').focus();
   };
+
   Site.closeLightbox = function () {
     const lb = document.getElementById('site-lightbox');
     if (lb) lb.classList.remove('open');
