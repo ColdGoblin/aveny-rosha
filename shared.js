@@ -1,6 +1,6 @@
 /* ═══════════════════════════════════════════════════════════
    Avney Rosha — מרחב מנטורים
-   Shared JS · v2.1 (UX fixes: hamburger, a11y, search, scroll-top)
+   Shared JS · v2.2 (UX fixes: hamburger, a11y, scroll-top)
 ═══════════════════════════════════════════════════════════ */
 
 (function () {
@@ -48,9 +48,7 @@
     chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>',
     info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>',
     // Up arrow for scroll-to-top
-    arrowUp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>',
-    // Search icon
-    search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="m21 21-4.35-4.35"/></svg>'
+    arrowUp: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>'
   };
 
   // ── Nav items (single source of truth) ──────────────────
@@ -230,59 +228,6 @@
     });
   }
 
-  // ── File search (appears on pages with 10+ file cards) ──
-  function initFileSearch() {
-    const allCards = document.querySelectorAll('.file-card');
-    if (allCards.length < 10) return;
-
-    const contentArea = document.querySelector('.content-area');
-    if (!contentArea) return;
-
-    const wrapper = document.createElement('div');
-    wrapper.className = 'file-search-wrapper';
-    wrapper.innerHTML = `
-      <div class="file-search">
-        ${I.search}
-        <input
-          type="search"
-          id="file-search-input"
-          placeholder="חיפוש קבצים..."
-          aria-label="חיפוש קבצים בעמוד"
-          autocomplete="off"
-        />
-        <span class="file-search-count" id="file-search-count" aria-live="polite"></span>
-      </div>
-    `;
-    contentArea.insertBefore(wrapper, contentArea.firstChild);
-
-    const input  = document.getElementById('file-search-input');
-    const countEl = document.getElementById('file-search-count');
-
-    input.addEventListener('input', function () {
-      const q = this.value.trim().toLowerCase();
-      let visible = 0;
-
-      allCards.forEach(card => {
-        const name = (card.querySelector('.file-name') || card).textContent.toLowerCase();
-        const show = !q || name.includes(q);
-        card.style.display = show ? '' : 'none';
-        if (show) visible++;
-      });
-
-      // Hide entire section-groups when all their direct file-cards are hidden
-      document.querySelectorAll('.section-group').forEach(group => {
-        const direct = group.querySelectorAll(':scope > .file-grid > .file-card');
-        const accCards = group.querySelectorAll('.acc-body .file-card');
-        const totalInGroup = direct.length + accCards.length;
-        if (totalInGroup === 0) return;
-        const hiddenInGroup = group.querySelectorAll('.file-card[style*="none"]').length;
-        group.style.display = hiddenInGroup === totalInGroup ? 'none' : '';
-      });
-
-      countEl.textContent = q ? `${visible} תוצאות` : '';
-    });
-  }
-
   // ── Accordion toggle helper ──────────────────────────────
   // Works both when called with a button element (new) or header div (legacy)
   function toggleAccordion(el) {
@@ -304,7 +249,6 @@
       decorateFileCards(document);
       initHamburger();
       initScrollToTop();
-      initFileSearch();
     },
     populateIcons,
     decorateFileDocs,
