@@ -1250,3 +1250,51 @@ button:focus-visible, a:focus-visible { border-radius: 6px; }
 }
 .scroll-top-btn svg { width: 18px; height: 18px; }
 .scroll-top-btn.visible { display: flex; }
+
+/* ═══════════════════════════════════════════════════════════
+   15 · FILE SEARCH
+═══════════════════════════════════════════════════════════ */
+.file-search-wrapper {
+  margin-bottom: 24px;
+}
+.file-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--paper);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  transition: border-color .15s, box-shadow .15s;
+  max-width: 400px;
+}
+.file-search:focus-within {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(26,181,204,.12);
+}
+.file-search svg { color: var(--text-light); flex-shrink: 0; }
+.file-search input {
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  flex: 1;
+  outline: none;
+  direction: rtl;
+  text-align: right;
+}
+.file-search input::placeholder { color: var(--text-light); }
+.file-search-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--teal);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.no-results-msg {
+  text-align: center;
+  padding: 32px;
+  color: var(--text-light);
+  font-size: 14px;
+}
