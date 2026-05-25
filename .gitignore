@@ -1,0 +1,13 @@
+# Large archive files (too big for GitHub)
+*.zip
+
+# Backup folders
+avney rosha/
+
+# Claude config
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
