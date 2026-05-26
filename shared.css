@@ -312,6 +312,19 @@ button { font-family: inherit; cursor: pointer; }
   margin: 0 auto;
   width: 100%;
 }
+.page-intro {
+  max-width: 720px;
+  font-size: 17px;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin: 0 0 40px 0;
+  padding: 24px 28px;
+  background: var(--paper);
+  border-radius: var(--radius);
+  border-right: 4px solid var(--teal);
+  box-shadow: var(--shadow);
+}
+
 .section-group { margin-bottom: 36px; }
 
 .section-group-title {
