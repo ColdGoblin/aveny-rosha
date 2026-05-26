@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>הרשמה לתכנית | מרחב מנטורים</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+
+  <div id="site-chrome"></div>
+
+  <header class="page-header" data-accent="teal">
+    <button onclick="history.back()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-mid,#666);padding:0 0 12px 0;display:flex;align-items:center;gap:6px;direction:rtl;" aria-label="חזרה לדף הקודם">&#x2192; חזרה</button>
+    <div class="breadcrumb">
+      <a href="index.html">דף הבית</a>
+      <span class="sep">›</span>
+      <span>הרשמה לתכנית</span>
+    </div>
+    <span class="page-eyebrow"><span data-icon="sparkle"></span>הצטרפות לתכנית</span>
+    <h1>הרשמה לתכנית</h1>
+    <p class="page-desc">מידע על תכנית ההכשרה למנטורים ואופן ההרשמה.</p>
+    <div class="page-header-bar bar-teal"></div>
+  </header>
+
+  <main class="content-area">
+
+    <div class="quote-banner">
+      <div class="quote-mark">"</div>
+      <div class="quote-body">
+        <blockquote class="quote-text">מנטורינג הוא לא תפקיד — הוא בחירה. ברגע שאתה בוחר ללוות, אתה משנה גם אותך וגם אותו.</blockquote>
+        <div class="quote-label">מתוך עקרונות התכנית</div>
+      </div>
+    </div>
+
+    <div class="page-intro" style="border-right-color: var(--teal);">
+      <p>תכנית מנטורים למנהלים של אבני ראשה מכשירה מנהלים בית-ספריים לשמש כמנטורים של עמיתיהם. הצטרפות לתכנית פותחת מסלול מקצועי עמוק — ומשפיעה גם על המנטי וגם על המנטור עצמו. צפו בסרטון הבא לפרטים, ולחצו על הכפתור להרשמה.</p>
+    </div>
+
+    <!-- סרטון -->
+    <div class="section-group">
+      <div class="section-group-title">
+        <div class="sec-ico" data-tone="teal" data-icon="presentation"></div>
+        <div class="sec-text"><strong>סרטון הכרות עם התכנית</strong><span>מבט על מטרות ומבנה ההכשרה</span></div>
+      </div>
+      <div style="margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #000;">
+        <div style="position: relative; padding-top: 56.25%;">
+          <iframe
+            src="https://drive.google.com/file/d/1tBO7kSUL9ZSlHWQw-Rp4RdrtYBnfQMfI/preview"
+            style="position:absolute; top:0; left:0; width:100%; height:100%; border:none;"
+            allow="autoplay"
+            allowfullscreen
+            title="סרטון הכרות עם תכנית מנטורים למנהלים"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- הרשמה -->
+    <div class="section-group">
+      <div class="section-group-title">
+        <div class="sec-ico" data-tone="teal" data-icon="sparkle"></div>
+        <div class="sec-text"><strong>הרשמה לתכנית</strong><span>דרך אתר אבני ראשה</span></div>
+      </div>
+      <div style="padding: 24px 0 8px;">
+        <a
+          href="https://avneyrosha.org.il/program/mentors-training/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="display:inline-flex; align-items:center; gap:10px; background:var(--teal); color:#fff; font-family:inherit; font-size:16px; font-weight:700; padding:14px 28px; border-radius:var(--radius); text-decoration:none; box-shadow:var(--shadow); transition:opacity 0.15s;"
+          onmouseover="this.style.opacity='0.88'"
+          onmouseout="this.style.opacity='1'"
+        >
+          <span data-icon="arrow" style="display:inline-flex;"></span>
+          להרשמה לתכנית — אתר אבני ראשה
+        </a>
+        <p style="margin-top:16px; font-size:14px; color:var(--text-mid);">
+          ההרשמה מתבצעת דרך האתר הרשמי של אבני ראשה — המכון הישראלי למנהיגות בית ספרית.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="shared.js"></script>
+  <script>Site.mount('registration');</script>
+</body>
+</html>

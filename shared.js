@@ -58,7 +58,8 @@
     { id: 'field',        href: 'field-use.html',       label: 'שימוש בשטח' },
     { id: 'shared',       href: 'main-shared.html',     label: 'חומרים נוספים' },
     { id: 'supervisors',  href: 'supervisors.html',     label: 'מסלול מפקחים' },
-    { id: 'principals',   href: 'principals.html',      label: 'מסלול מנהלים' }
+    { id: 'principals',   href: 'principals.html',      label: 'מסלול מנהלים' },
+    { id: 'registration', href: 'registration.html',    label: 'הרשמה לתכנית' }
   ];
 
   // ── Render top strip + main nav ─────────────────────────
