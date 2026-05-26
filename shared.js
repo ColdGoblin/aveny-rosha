@@ -56,6 +56,7 @@
     { id: 'model',        href: 'mentoring-model.html', label: 'מודל המנטורינג' },
     { id: 'toolbox',      href: 'toolbox.html',         label: 'ארגז כלים' },
     { id: 'field',        href: 'field-use.html',       label: 'שימוש בשטח' },
+    { id: 'shared',       href: 'main-shared.html',     label: 'חומרים נוספים' },
     { id: 'supervisors',  href: 'supervisors.html',     label: 'מסלול מפקחים' },
     { id: 'principals',   href: 'principals.html',      label: 'מסלול מנהלים' }
   ];
