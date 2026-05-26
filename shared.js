@@ -170,10 +170,26 @@
 
       // Add view + download action buttons
       if (href) {
+        // Build absolute URL needed by external viewer services
+        const absUrl = new URL(href, window.location.href).href;
+        const ext = href.split('?')[0].split('.').pop().toLowerCase();
+
+        // PDF  → browser renders natively
+        // DOCX / PPTX / XLSX → Microsoft Office Online viewer
+        // anything else → Google Docs viewer (fallback)
+        let viewUrl;
+        if (ext === 'pdf') {
+          viewUrl = href;
+        } else if (['docx','doc','pptx','ppt','xlsx','xls'].includes(ext)) {
+          viewUrl = 'https://view.officeapps.live.com/op/view.aspx?src=' + encodeURIComponent(absUrl);
+        } else {
+          viewUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(absUrl);
+        }
+
         const actions = document.createElement('div');
         actions.className = 'file-actions';
         actions.innerHTML = `
-          <a href="${href}" target="_blank" class="file-btn file-view-btn" aria-label="פתח לצפייה">
+          <a href="${viewUrl}" target="_blank" rel="noopener" class="file-btn file-view-btn" aria-label="פתח לצפייה">
             ${I.eye}<span>צפייה</span>
           </a>
           <a href="${href}" download class="file-btn file-dl-btn" aria-label="הורד קובץ">
