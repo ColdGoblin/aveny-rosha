@@ -46,7 +46,8 @@
     arrow: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>',
     download: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12m0 0-4-4m4 4 4-4M5 20h14"/></svg>',
     chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>',
-    info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>'
+    info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>',
+    eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>'
   };
 
   // ── Nav items (single source of truth) ──────────────────
@@ -68,8 +69,8 @@
     return `
       <div class="site-strip">
         <div class="strip-lockup">
-          <div class="strip-logo"><img src="State_of_Israel_Ministry_of_Education.png" alt="מדינת ישראל · משרד החינוך" /></div>
-          <div class="strip-logo"><img src="unnamed.png" alt="אבני ראשה" /></div>
+          <div class="strip-logo"><img src="logo-education-ministry-new.png" alt="מדינת ישראל · משרד החינוך" /></div>
+          <div class="strip-logo"><img src="logo-avney-rosha-new.png" alt="אבני ראשה" /></div>
           <div class="strip-meta">
             <strong>אבני ראשה</strong>
             <span>המכון הישראלי למנהיגות בית ספרית</span>
@@ -88,7 +89,11 @@
             <span>מנהלים ומפקחים</span>
           </div>
         </div>
-        <div class="nav-links">${links}</div>
+        <div class="nav-links" id="main-nav-links">${links}</div>
+        <button class="nav-hamburger" id="nav-hamburger" type="button"
+          aria-label="פתח תפריט ניווט" aria-expanded="false" aria-controls="main-nav-links">
+          <span></span><span></span><span></span>
+        </button>
       </nav>
     `;
   }
@@ -99,7 +104,7 @@
       <div class="site-footer">
         <div class="site-footer-inner">
           <div class="footer-brand">
-            <img src="unnamed.png" alt="אבני ראשה" />
+            <img src="logo-avney-rosha-new.png" alt="אבני ראשה" />
             <div>
               <strong>מרחב למידה למנטורים</strong>
               אבני ראשה — המכון הישראלי למנהיגות בית ספרית · משרד החינוך
@@ -143,15 +148,80 @@
     });
   }
 
-  // ── Add download buttons to .file-card (if missing) ─────
+  // ── Add view + download buttons to .file-card ───────────
   function decorateFileCards(root) {
     (root || document).querySelectorAll('.file-card').forEach(card => {
-      if (card.querySelector('.file-dl')) return;
-      const dl = document.createElement('span');
-      dl.className = 'file-dl';
-      dl.setAttribute('aria-label', 'הורדה');
-      dl.innerHTML = I.download;
-      card.appendChild(dl);
+      if (card.querySelector('.file-actions')) return;
+
+      const href = card.tagName === 'A' ? card.getAttribute('href') : null;
+
+      // Convert <a class="file-card"> → <div> so nested links are valid HTML
+      let el = card;
+      if (card.tagName === 'A' && href) {
+        el = document.createElement('div');
+        el.className = card.className;
+        while (card.firstChild) el.appendChild(card.firstChild);
+        card.parentNode.replaceChild(el, card);
+      }
+
+      // Remove legacy single-icon download button if present
+      const oldDl = el.querySelector('.file-dl');
+      if (oldDl) oldDl.remove();
+
+      // Add view + download action buttons
+      if (href) {
+        const actions = document.createElement('div');
+        actions.className = 'file-actions';
+        actions.innerHTML = `
+          <a href="${href}" target="_blank" class="file-btn file-view-btn" aria-label="פתח לצפייה">
+            ${I.eye}<span>צפייה</span>
+          </a>
+          <a href="${href}" download class="file-btn file-dl-btn" aria-label="הורד קובץ">
+            ${I.download}<span>הורדה</span>
+          </a>
+        `;
+        el.appendChild(actions);
+      }
+    });
+  }
+
+  // ── Hamburger toggle (mobile sidebar → top bar) ─────────
+  function initHamburger() {
+    const btn  = document.getElementById('nav-hamburger');
+    const menu = document.getElementById('main-nav-links');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const isOpen = this.classList.toggle('open');
+      this.setAttribute('aria-expanded', isOpen);
+      this.setAttribute('aria-label', isOpen ? 'סגור תפריט ניווט' : 'פתח תפריט ניווט');
+      menu.classList.toggle('mobile-open', isOpen);
+    });
+
+    menu.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('mobile-open');
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!btn.contains(e.target) && !menu.contains(e.target)) {
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('mobile-open');
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && btn.classList.contains('open')) {
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.classList.remove('mobile-open');
+        btn.focus();
+      }
     });
   }
 
@@ -167,6 +237,7 @@
       populateIcons(document);
       decorateFileDocs(document);
       decorateFileCards(document);
+      initHamburger();
     },
     populateIcons,
     decorateFileDocs,
