@@ -137,47 +137,18 @@ button { font-family: inherit; cursor: pointer; }
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 11px;
+  justify-content: center;
   flex-shrink: 0;
-  padding: 0 16px 18px;
+  padding: 16px 16px 18px;
   border-bottom: 1px solid var(--border);
   margin-bottom: 8px;
 }
-.nav-mark {
-  width: 32px;
-  height: 32px;
-  border-radius: 9px;
-  background: linear-gradient(135deg, var(--teal) 0%, var(--blue) 100%);
-  position: relative;
-  flex-shrink: 0;
-  box-shadow: 0 2px 6px rgba(43,78,200,0.25);
-}
-.nav-mark::after {
-  content: "";
-  position: absolute;
-  top: 9px;
-  left: 8px;
-  right: 8px;
-  bottom: 11px;
-  border: 2px solid #fff;
-  border-bottom: 0;
-  border-radius: 999px 999px 0 0;
-}
-.nav-brand-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-.nav-brand-text strong {
-  font-size: 15px;
-  font-weight: 800;
-  color: var(--ink);
-  letter-spacing: -.01em;
-}
-.nav-brand-text span {
-  font-size: 13px;
-  color: var(--text-mid);
-  font-weight: 500;
+.nav-brand-logo {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 .nav-links {
   display: flex;
@@ -1160,8 +1131,10 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 860px) {
   /* sidebar → sticky top bar on mobile */
   body { padding-right: 0; }
-  .site-strip { padding: 0 16px; min-height: auto; }
-  .strip-lockup { flex-wrap: wrap; }
+  .site-strip { padding: 0 12px; min-height: auto; }
+  .strip-lockup { flex-wrap: nowrap; }
+  .strip-logo { padding: 8px 10px; }
+  .strip-logo img { height: 44px; }
   .site-nav {
     position: sticky;
     right: auto; left: auto; top: 0; bottom: auto;
@@ -1174,7 +1147,8 @@ button { font-family: inherit; cursor: pointer; }
     border-bottom: 1px solid var(--border);
     overflow: visible;
   }
-  .nav-brand { padding: 0; border-bottom: none; margin-bottom: 0; }
+  .nav-brand { padding: 0 8px; border-bottom: none; margin-bottom: 0; justify-content: flex-start; }
+  .nav-brand-logo { max-width: 120px; height: 40px; width: auto; }
   .nav-links {
     display: none;
     flex-direction: column;

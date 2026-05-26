@@ -70,12 +70,8 @@
     return `
       <div class="site-strip">
         <div class="strip-lockup">
-          <div class="strip-logo"><img src="logo-education-ministry-new.png" alt="מדינת ישראל · משרד החינוך" /></div>
-          <div class="strip-logo"><img src="logo-avney-rosha-new.png" alt="אבני ראשה" /></div>
-          <div class="strip-meta">
-            <strong>אבני ראשה</strong>
-            <span>המכון הישראלי למנהיגות בית ספרית</span>
-          </div>
+          <div class="strip-logo"><img src="logo-ministry-official.png" alt="מדינת ישראל · משרד החינוך" /></div>
+          <div class="strip-logo"><img src="logo-avney-rosha-official.png" alt="אבני ראשה — המכון הישראלי למנהיגות בית ספרית" /></div>
         </div>
         <div class="strip-tag">
           ${I.sparkle}
@@ -84,11 +80,7 @@
       </div>
       <nav class="site-nav" aria-label="ניווט ראשי">
         <div class="nav-brand">
-          <div class="nav-mark" aria-hidden="true"></div>
-          <div class="nav-brand-text">
-            <strong>מרחב מנטורים</strong>
-            <span>מנהלים ומפקחים</span>
-          </div>
+          <img src="logo-mentors.png" alt="מנטורים למנהלים — אבני ראשה" class="nav-brand-logo" />
         </div>
         <div class="nav-links" id="main-nav-links">${links}</div>
         <button class="nav-hamburger" id="nav-hamburger" type="button"
@@ -105,7 +97,7 @@
       <div class="site-footer">
         <div class="site-footer-inner">
           <div class="footer-brand">
-            <img src="logo-avney-rosha-new.png" alt="אבני ראשה" />
+            <img src="logo-avney-rosha-official.png" alt="אבני ראשה" />
             <div>
               <strong>מרחב למידה למנטורים</strong>
               אבני ראשה — המכון הישראלי למנהיגות בית ספרית · משרד החינוך
