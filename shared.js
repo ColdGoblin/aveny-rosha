@@ -170,20 +170,23 @@
 
       // Add view + download action buttons
       if (href) {
-        // Build absolute URL needed by external viewer services
-        const absUrl = new URL(href, window.location.href).href;
         const ext = href.split('?')[0].split('.').pop().toLowerCase();
 
-        // PDF  → browser renders natively
-        // DOCX / PPTX / XLSX → Microsoft Office Online viewer
+        // Build a raw absolute URL (literal Hebrew/spaces preserved) so that
+        // encodeURIComponent produces single-encoded output — not double-encoded.
+        const base = window.location.href.replace(/[^/]*$/, '');
+        const rawAbs = base + href;
+
+        // PDF  → browser renders natively (no viewer needed)
+        // DOCX / PPTX / DOC / PPT / XLSX → Microsoft Office Online viewer
         // anything else → Google Docs viewer (fallback)
         let viewUrl;
         if (ext === 'pdf') {
           viewUrl = href;
         } else if (['docx','doc','pptx','ppt','xlsx','xls'].includes(ext)) {
-          viewUrl = 'https://view.officeapps.live.com/op/view.aspx?src=' + encodeURIComponent(absUrl);
+          viewUrl = 'https://view.officeapps.live.com/op/view.aspx?src=' + encodeURIComponent(rawAbs);
         } else {
-          viewUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(absUrl);
+          viewUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(rawAbs);
         }
 
         const actions = document.createElement('div');
