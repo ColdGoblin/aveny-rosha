@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>משחקים קטנים למנטורים | מרחב מנטורים</title>
+  <link rel="stylesheet" href="shared.css" />
+</head>
+<body>
+
+  <div id="site-chrome"></div>
+
+  <header class="page-header" data-accent="purple">
+    <button onclick="history.back()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-mid,#666);padding:0 0 12px 0;display:flex;align-items:center;gap:6px;direction:rtl;" aria-label="חזרה לדף הקודם">&#x2192; חזרה</button>
+    <div class="breadcrumb">
+      <a href="index.html">דף הבית</a>
+      <span class="sep">›</span>
+      <span>משחקים קטנים</span>
+    </div>
+    <span class="page-eyebrow"><span data-icon="game"></span>למידה פעילה</span>
+    <h1>משחקים קטנים למנטורים</h1>
+    <p class="page-desc">תרגול מושגים ועקרונות מנטורינג בצורה שובת לב — לבד, בזוגות או בקבוצה.</p>
+    <div class="page-header-bar bar-purple"></div>
+  </header>
+
+  <main class="content-area">
+
+    <div class="quote-banner">
+      <div class="quote-mark">"</div>
+      <div class="quote-body">
+        <blockquote class="quote-text">משחק הוא הדרך שבה מוח מבוגר לומד הכי עמוק — כשהוא לא יודע שהוא לומד.</blockquote>
+      </div>
+    </div>
+
+    <div class="page-intro" style="border-right-color: var(--purple);">
+      <p>כל משחק כאן מבוסס על תכנים מהקורס — מושגים, כלים ועקרונות שנלמדו. אפשר לשחק לבד כחזרה, בזוגות כתרגול, או בקבוצה כפעילות פתיחה למפגש.</p>
+    </div>
+
+    <!-- משחק 1 -->
+    <div class="section-group">
+      <div class="section-group-title">
+        <div class="sec-ico" data-tone="purple" data-icon="game"></div>
+        <div class="sec-text"><strong>מושגי מנטורינג וראפור</strong><span>Padlet Arcade · שאלות ידע</span></div>
+        <span class="sec-count">משחק 1</span>
+      </div>
+      <div style="margin-top:16px; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);">
+        <iframe
+          src="https://arcade.padlet.com/game/06r00VeQr7?embed=1"
+          title="מושגי מנטורינג וראפור - Padlet Arcade"
+          width="100%"
+          height="700"
+          style="border:none; display:block;"
+          allow="fullscreen"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- משחק 2 -->
+    <div class="section-group">
+      <div class="section-group-title">
+        <div class="sec-ico" data-tone="purple" data-icon="game"></div>
+        <div class="sec-text"><strong>עולם המנטורינג</strong><span>Padlet Arcade · שאלות ידע</span></div>
+        <span class="sec-count">משחק 2</span>
+      </div>
+      <div style="margin-top:16px; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);">
+        <iframe
+          src="https://arcade.padlet.com/game/EZrXaRxQj7?embed=1"
+          title="עולם המנטורינג - Padlet Arcade"
+          width="100%"
+          height="700"
+          style="border:none; display:block;"
+          allow="fullscreen"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="shared.js"></script>
+  <script>Site.mount('games');</script>
+</body>
+</html>
