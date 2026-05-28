@@ -28,6 +28,12 @@
   --purple-tint-2:#e0c8fa;
   --blue-tint:    #e6ecfb;
   --blue-tint-2:  #c8d4f5;
+  --green:        #15803d;
+  --green-tint:   #dcfce7;
+  --green-tint-2: #bbf7d0;
+  --rose:         #be123c;
+  --rose-tint:    #ffe4e6;
+  --rose-tint-2:  #fecdd3;
 
   /* Neutrals */
   --ink:          #0e1726;
@@ -290,11 +296,15 @@ button { font-family: inherit; cursor: pointer; }
 .bar-blue   { background: var(--blue); }
 .bar-orange { background: var(--orange); }
 .bar-purple { background: var(--purple); }
+.bar-green  { background: var(--green); }
+.bar-rose   { background: var(--rose); }
 
 /* Variant for routes (principals / supervisors) with brand color */
 .page-header[data-accent="orange"] .page-eyebrow { color: var(--orange-text); background: var(--orange-tint); }
 .page-header[data-accent="purple"] .page-eyebrow { color: var(--purple);      background: var(--purple-tint); }
 .page-header[data-accent="blue"]   .page-eyebrow { color: var(--blue);        background: var(--blue-tint); }
+.page-header[data-accent="green"]  .page-eyebrow { color: var(--green);       background: var(--green-tint); }
+.page-header[data-accent="rose"]   .page-eyebrow { color: var(--rose);        background: var(--rose-tint); }
 
 /* ═══════════════════════════════════════════════════════════
    3 · CONTENT AREA + SECTION GROUPS
@@ -318,24 +328,32 @@ button { font-family: inherit; cursor: pointer; }
   box-shadow: var(--shadow);
 }
 
-.section-group { margin-bottom: 36px; }
+.section-group { margin-bottom: 48px; }
 
 .section-group-title {
   display: flex;
   align-items: center;
   gap: 14px;
   margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1.5px solid var(--border);
+  padding: 14px 16px;
+  background: var(--teal-tint);
+  border-radius: 12px;
+  border: 1px solid var(--border-strong);
+  border-right: 4px solid var(--teal);
   text-align: right;
   direction: rtl;
   width: 100%;
 }
+.section-group-title:has([data-tone="orange"]) { border-right-color: var(--orange-deep); background: var(--orange-tint); }
+.section-group-title:has([data-tone="purple"]) { border-right-color: var(--purple);      background: var(--purple-tint); }
+.section-group-title:has([data-tone="blue"])   { border-right-color: var(--blue);         background: var(--blue-tint); }
+.section-group-title:has([data-tone="green"])  { border-right-color: var(--green);        background: var(--green-tint); }
+.section-group-title:has([data-tone="rose"])   { border-right-color: var(--rose);         background: var(--rose-tint); }
 .sec-ico {
   width: 38px;
   height: 38px;
   border-radius: 10px;
-  background: var(--teal-tint);
+  background: var(--teal-tint-2);
   color: var(--teal);
   display: flex;
   align-items: center;
@@ -343,9 +361,11 @@ button { font-family: inherit; cursor: pointer; }
   flex-shrink: 0;
 }
 .sec-ico svg { width: 20px; height: 20px; }
-.sec-ico[data-tone="orange"] { background: var(--orange-tint); color: var(--orange-deep); }
-.sec-ico[data-tone="purple"] { background: var(--purple-tint); color: var(--purple); }
-.sec-ico[data-tone="blue"]   { background: var(--blue-tint); color: var(--blue); }
+.sec-ico[data-tone="orange"] { background: var(--orange-tint-2); color: var(--orange-deep); }
+.sec-ico[data-tone="purple"] { background: var(--purple-tint-2); color: var(--purple); }
+.sec-ico[data-tone="blue"]   { background: var(--blue-tint-2);   color: var(--blue); }
+.sec-ico[data-tone="green"]  { background: var(--green-tint-2);  color: var(--green); }
+.sec-ico[data-tone="rose"]   { background: var(--rose-tint-2);   color: var(--rose); }
 
 .sec-text {
   display: flex;
@@ -355,8 +375,8 @@ button { font-family: inherit; cursor: pointer; }
   min-width: 0;
 }
 .sec-text strong {
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 900;
   color: var(--ink);
 }
 .sec-text span {
@@ -662,7 +682,7 @@ button { font-family: inherit; cursor: pointer; }
 
 /* Quote banner */
 .quote-banner {
-  background: linear-gradient(130deg, var(--teal) 0%, #1a8ba8 45%, var(--blue) 100%);
+  background: linear-gradient(130deg, #0a7a8f 0%, #0a5573 45%, var(--blue) 100%);
   border-radius: 18px;
   padding: 30px 36px;
   margin-bottom: 20px;
