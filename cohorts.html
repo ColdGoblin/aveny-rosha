@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>מחזורים | מרחב מנטורים</title>
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    .cohort-embed-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #fff;
+      min-height: 700px;
+    }
+    .cohort-embed-wrap iframe {
+      display: block;
+      width: 100%;
+      height: 800px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="site-chrome"></div>
+
+  <header class="page-header" data-accent="teal">
+    <button onclick="history.back()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-mid,#666);padding:0 0 12px 0;display:flex;align-items:center;gap:6px;direction:rtl;" aria-label="חזרה לדף הקודם">&#x2192; חזרה</button>
+    <div class="breadcrumb">
+      <a href="index.html">דף הבית</a>
+      <span class="sep">›</span>
+      <span>מחזורים</span>
+    </div>
+    <span class="page-eyebrow"><span data-icon="cohorts"></span>קבוצות המשתתפים</span>
+    <h1>מחזורים</h1>
+    <p class="page-desc">פרטי המחזורים הפעילים של תכנית המנטורים — מידע, לוחות זמנים ועדכונים לפי שנת לימודים.</p>
+    <div class="page-header-bar bar-teal"></div>
+  </header>
+
+  <main class="content-area">
+
+    <!-- מחזור א מנהלים תשפ"ו -->
+    <div class="section-group">
+      <div class="section-group-title">
+        <div class="sec-ico" data-tone="teal" data-icon="cohorts"></div>
+        <div class="sec-text"><strong>מחזור א׳ מנהלים</strong><span>תשפ"ו · 2025–2026</span></div>
+        <span class="sec-count">מחזור 1</span>
+      </div>
+      <div class="cohort-embed-wrap" style="margin-top:16px;">
+        <iframe
+          src="https://avneyrosha.org.il/mentors-program-2026/"
+          title="מחזור א מנהלים תשפ״ו — אבני ראשה"
+          allow="fullscreen"
+          loading="lazy"
+        ></iframe>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <script src="shared.js"></script>
+  <script>Site.mount('cohorts');</script>
+</body>
+</html>

@@ -48,7 +48,8 @@
     chevron: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg>',
     info: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>',
     eye: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>',
-    game: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="12" rx="3"/><path d="M8 13h4M10 11v4"/><circle cx="16" cy="13" r=".8" fill="currentColor"/><circle cx="14" cy="11.5" r=".8" fill="currentColor"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>'
+    game: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="12" rx="3"/><path d="M8 13h4M10 11v4"/><circle cx="16" cy="13" r=".8" fill="currentColor"/><circle cx="14" cy="11.5" r=".8" fill="currentColor"/><path d="M6 7V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg>',
+    cohorts: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>'
   };
 
   // ── Nav items (single source of truth) ──────────────────
@@ -61,7 +62,8 @@
     { id: 'supervisors',  href: 'supervisors.html',     label: 'מסלול מפקחים' },
     { id: 'principals',   href: 'principals.html',      label: 'מסלול מנהלים' },
     { id: 'registration', href: 'registration.html',    label: 'הרשמה לתכנית' },
-    { id: 'games',        href: 'games.html',           label: 'משחקים קטנים' }
+    { id: 'games',        href: 'games.html',           label: 'משחקים קטנים' },
+    { id: 'cohorts',      href: 'cohorts.html',         label: 'מחזורים' }
   ];
 
   // ── Render top strip + main nav ─────────────────────────
