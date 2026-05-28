@@ -167,35 +167,46 @@
 
       // Add view + download action buttons
       if (href) {
-        const ext = href.split('?')[0].split('.').pop().toLowerCase();
-
-        // Build a raw absolute URL (literal Hebrew/spaces preserved) so that
-        // encodeURIComponent produces single-encoded output — not double-encoded.
-        const base = window.location.href.replace(/[^/]*$/, '');
-        const rawAbs = base + href;
-
-        // PDF  → browser renders natively (no viewer needed)
-        // DOCX / PPTX / DOC / PPT / XLSX → Microsoft Office Online viewer
-        // anything else → Google Docs viewer (fallback)
-        let viewUrl;
-        if (ext === 'pdf') {
-          viewUrl = href;
-        } else if (['docx','doc','pptx','ppt','xlsx','xls'].includes(ext)) {
-          viewUrl = 'https://view.officeapps.live.com/op/view.aspx?src=' + encodeURIComponent(rawAbs);
-        } else {
-          viewUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(rawAbs);
-        }
-
         const actions = document.createElement('div');
         actions.className = 'file-actions';
-        actions.innerHTML = `
-          <a href="${viewUrl}" target="_blank" rel="noopener" class="file-btn file-view-btn" aria-label="פתח לצפייה">
-            ${I.eye}<span>צפייה</span>
-          </a>
-          <a href="${href}" download class="file-btn file-dl-btn" aria-label="הורד קובץ">
-            ${I.download}<span>הורדה</span>
-          </a>
-        `;
+
+        // External URL (Canva, YouTube, etc.) → open directly, no viewer wrapping
+        if (href.startsWith('http://') || href.startsWith('https://')) {
+          actions.innerHTML = `
+            <a href="${href}" target="_blank" rel="noopener noreferrer" class="file-btn file-view-btn" aria-label="פתח לצפייה">
+              ${I.eye}<span>פתח</span>
+            </a>
+          `;
+        } else {
+          const ext = href.split('?')[0].split('.').pop().toLowerCase();
+
+          // Build a raw absolute URL (literal Hebrew/spaces preserved) so that
+          // encodeURIComponent produces single-encoded output — not double-encoded.
+          const base = window.location.href.replace(/[^/]*$/, '');
+          const rawAbs = base + href;
+
+          // PDF  → browser renders natively (no viewer needed)
+          // DOCX / PPTX / DOC / PPT / XLSX → Microsoft Office Online viewer
+          // anything else → Google Docs viewer (fallback)
+          let viewUrl;
+          if (ext === 'pdf') {
+            viewUrl = href;
+          } else if (['docx','doc','pptx','ppt','xlsx','xls'].includes(ext)) {
+            viewUrl = 'https://view.officeapps.live.com/op/view.aspx?src=' + encodeURIComponent(rawAbs);
+          } else {
+            viewUrl = 'https://docs.google.com/viewer?url=' + encodeURIComponent(rawAbs);
+          }
+
+          actions.innerHTML = `
+            <a href="${viewUrl}" target="_blank" rel="noopener" class="file-btn file-view-btn" aria-label="פתח לצפייה">
+              ${I.eye}<span>צפייה</span>
+            </a>
+            <a href="${href}" download class="file-btn file-dl-btn" aria-label="הורד קובץ">
+              ${I.download}<span>הורדה</span>
+            </a>
+          `;
+        }
+
         el.appendChild(actions);
       }
     });
