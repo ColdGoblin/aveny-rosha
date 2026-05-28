@@ -1118,7 +1118,7 @@ button { font-family: inherit; cursor: pointer; }
 .footer-meta {
   font-size: 12px;
   color: var(--text-light);
-  text-align: left;
+  text-align: right;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1128,13 +1128,19 @@ button { font-family: inherit; cursor: pointer; }
   .home-title { font-size: 44px; }
   .page-header h1 { font-size: 32px; }
 }
+
 @media (max-width: 860px) {
-  /* sidebar → sticky top bar on mobile */
+  /* ── Sidebar → sticky top bar ────────────────────────── */
   body { padding-right: 0; }
+
+  /* Strip */
   .site-strip { padding: 0 12px; min-height: auto; }
   .strip-lockup { flex-wrap: nowrap; }
   .strip-logo { padding: 8px 10px; }
   .strip-logo img { height: 44px; }
+  .strip-tag { display: none; } /* hide tag — not enough room on mobile */
+
+  /* Nav */
   .site-nav {
     position: sticky;
     right: auto; left: auto; top: 0; bottom: auto;
@@ -1164,21 +1170,73 @@ button { font-family: inherit; cursor: pointer; }
     z-index: 200;
   }
   .nav-links.mobile-open { display: flex; }
-  .nav-links a { font-size: 16px; padding: 10px 14px; border-right: 3px solid transparent; }
+  /* Touch-friendly nav links (min 44px tap target) */
+  .nav-links a {
+    font-size: 16px;
+    padding: 12px 14px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border-right: 3px solid transparent;
+  }
   .nav-links a.active { border-right-color: var(--teal); }
   .nav-hamburger { display: flex; margin-inline-start: auto; }
 
-  /* Content layout */
-  .page-header { padding: 24px 16px 20px; }
-  .page-header h1 { font-size: 26px; }
-  .content-area { padding: 0 16px 48px; }
-  .file-grid { grid-template-columns: 1fr; }
+  /* ── Homepage ─────────────────────────────────────────── */
   .home-hero { padding: 40px 16px; }
   .home-title { font-size: 36px; }
   .cards-area { padding: 20px 16px 48px; }
+
+  /* Hero stats: wrap and reduce horizontal padding */
+  .hero-stats {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12px 16px;
+    gap: 4px;
+    width: 100%;
+  }
+  .hero-stat { padding: 6px 16px; }
+  .hero-stat-sep { display: none; }
+
+  /* Feature card: stack vertically */
+  .feature-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .feature-card-cta { width: 100%; justify-content: center; }
+
+  /* Category/dept grids → single column */
   .cat-grid { grid-template-columns: 1fr; }
   .dept-grid { grid-template-columns: 1fr; }
+
+  /* ── Page header + content ────────────────────────────── */
+  .page-header { padding: 24px 16px 20px; }
+  .page-header h1 { font-size: 26px; }
+  .content-area { padding: 0 16px 48px; }
+
+  /* Quote banner: tighten padding, shrink decorative mark */
+  .quote-banner { padding: 20px 20px; gap: 12px; }
+  .quote-mark { font-size: 56px; }
+  .quote-text { font-size: 17px; }
+
+  /* File grid → single column, bigger touch targets on buttons */
+  .file-grid { grid-template-columns: 1fr; }
+  .file-actions { flex-direction: row; width: auto; gap: 8px; }
+  .file-btn {
+    padding: 10px 14px;
+    min-height: 44px;
+    min-width: 72px;
+    font-size: 13px;
+  }
+
+  /* Section group title: allow wrap on very small screens */
+  .section-group-title { flex-wrap: wrap; gap: 10px; }
+
+  /* Photo grid */
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Footer */
   .site-footer { padding: 24px 16px 20px; }
   .site-footer-inner { flex-direction: column; align-items: flex-start; }
 }
@@ -1186,5 +1244,10 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 480px) {
   .home-title { font-size: 28px; }
   .page-header h1 { font-size: 22px; }
+  .quote-mark { display: none; } /* reclaim horizontal space on very small screens */
   .photo-grid { grid-template-columns: 1fr; }
+  /* File buttons: full width on smallest screens */
+  .file-actions { flex-direction: column; width: 100%; }
+  .file-btn { width: 100%; }
+  /* Feature card CTA full width already handled above */
 }
