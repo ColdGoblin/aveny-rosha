@@ -847,9 +847,10 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: center;
   flex-shrink: 0;
 }
-/* Icon bg stays full brand color; icon glyph is #fff (graphical — WCAG 1.4.11 non-text: note below) */
-.cat-card.teal   .cat-icon { background: var(--teal);   box-shadow: 0 5px 14px -4px var(--teal);   color: #fff; }
-.cat-card.orange .cat-icon { background: var(--orange); box-shadow: 0 5px 14px -4px var(--orange); color: #fff; }
+/* Teal + orange: tint bg + dark icon → passes WCAG 1.4.11 non-text contrast (3:1) */
+.cat-card.teal   .cat-icon { background: var(--teal-tint);   color: var(--teal-text); box-shadow: none; }
+.cat-card.orange .cat-icon { background: var(--orange-tint); color: var(--orange-text); box-shadow: none; }
+/* Purple + blue: white on brand passes 3:1 already (5.7:1 and 6.3:1) */
 .cat-card.purple .cat-icon { background: var(--purple); box-shadow: 0 5px 14px -4px var(--purple); color: #fff; }
 .cat-card.blue   .cat-icon { background: var(--blue);   box-shadow: 0 5px 14px -4px var(--blue);   color: #fff; }
 .cat-icon svg { width: 22px; height: 22px; }
