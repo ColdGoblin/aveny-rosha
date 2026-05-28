@@ -15,6 +15,10 @@
   --orange-deep:  #b87800;
   --purple:       #8435c8;
 
+  /* Accessible text variants (WCAG AA ≥ 4.5:1 on white/light bg) */
+  --teal-text:    #006a80;   /* 6.2:1 on white; replaces --teal for text */
+  --orange-text:  #7a5200;   /* 6.9:1 on white; replaces --orange-deep for text */
+
   /* Soft tints derived from brand */
   --teal-tint:    #e6f7fa;
   --teal-tint-2:  #cdeef4;
@@ -30,7 +34,7 @@
   --ink-2:        #1a2233;
   --text-dark:    #1a2233;
   --text-mid:     #4a5568;
-  --text-light:   #718096;
+  --text-light:   #5c6a7e;   /* was #718096; now 4.9:1 on white (WCAG AA) */
   --border:       #e4e8ee;
   --border-strong:#cbd2dc;
   --bg:           #f4f6fa;
@@ -44,6 +48,24 @@
   --radius-sm:    10px;
   --radius-xs:    8px;
 }
+
+/* ── Skip-to-content link (WCAG 2.4.1) ───────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  right: 0;
+  z-index: 10000;
+  background: var(--blue);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 0 0 10px 10px;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: top .2s ease;
+  white-space: nowrap;
+}
+.skip-link:focus { top: 0; outline: 3px solid var(--teal); outline-offset: 2px; }
 
 html { font-size: 18px; -webkit-text-size-adjust: 100%; scroll-padding-top: 24px; }
 body {
@@ -170,7 +192,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .nav-links a:hover { color: var(--ink); background: #eef2f7; }
 .nav-links a.active {
-  color: var(--teal);
+  color: var(--teal-text);
   font-weight: 700;
   background: var(--teal-tint);
   border-right-color: var(--teal);
@@ -227,7 +249,7 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   gap: 6px;
 }
-.page-header .breadcrumb a { color: var(--teal); font-weight: 500; }
+.page-header .breadcrumb a { color: var(--teal-text); font-weight: 500; }
 .page-header .breadcrumb a:hover { text-decoration: underline; }
 .page-header .breadcrumb .sep { color: var(--border-strong); }
 .page-header .page-eyebrow {
@@ -237,7 +259,7 @@ button { font-family: inherit; cursor: pointer; }
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .04em;
-  color: var(--teal);
+  color: var(--teal-text);
   background: var(--teal-tint);
   padding: 5px 11px;
   border-radius: 999px;
@@ -270,9 +292,9 @@ button { font-family: inherit; cursor: pointer; }
 .bar-purple { background: var(--purple); }
 
 /* Variant for routes (principals / supervisors) with brand color */
-.page-header[data-accent="orange"] .page-eyebrow { color: var(--orange-deep); background: var(--orange-tint); }
-.page-header[data-accent="purple"] .page-eyebrow { color: var(--purple); background: var(--purple-tint); }
-.page-header[data-accent="blue"]   .page-eyebrow { color: var(--blue);   background: var(--blue-tint); }
+.page-header[data-accent="orange"] .page-eyebrow { color: var(--orange-text); background: var(--orange-tint); }
+.page-header[data-accent="purple"] .page-eyebrow { color: var(--purple);      background: var(--purple-tint); }
+.page-header[data-accent="blue"]   .page-eyebrow { color: var(--blue);        background: var(--blue-tint); }
 
 /* ═══════════════════════════════════════════════════════════
    3 · CONTENT AREA + SECTION GROUPS
@@ -435,7 +457,7 @@ button { font-family: inherit; cursor: pointer; }
 .file-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 .file-view-btn {
   background: var(--teal-tint);
-  color: var(--teal);
+  color: var(--teal-text);
   border-color: var(--teal-tint-2);
 }
 .file-view-btn:hover { background: var(--teal-tint-2); border-color: var(--teal); }
@@ -809,8 +831,8 @@ button { font-family: inherit; cursor: pointer; }
   box-shadow: var(--shadow-hover);
   border-color: rgba(0,0,0,.08);
 }
-.cat-card.teal   { color: var(--teal); }
-.cat-card.orange { color: var(--orange); }
+.cat-card.teal   { color: var(--teal-text); }
+.cat-card.orange { color: var(--orange-text); }
 .cat-card.purple { color: var(--purple); }
 .cat-card.blue   { color: var(--blue); }
 
@@ -825,10 +847,11 @@ button { font-family: inherit; cursor: pointer; }
   justify-content: center;
   flex-shrink: 0;
 }
-.cat-card.teal   .cat-icon { background: var(--teal);   box-shadow: 0 5px 14px -4px var(--teal); }
-.cat-card.orange .cat-icon { background: var(--orange); box-shadow: 0 5px 14px -4px var(--orange); }
-.cat-card.purple .cat-icon { background: var(--purple); box-shadow: 0 5px 14px -4px var(--purple); }
-.cat-card.blue   .cat-icon { background: var(--blue);   box-shadow: 0 5px 14px -4px var(--blue); }
+/* Icon bg stays full brand color; icon glyph is #fff (graphical — WCAG 1.4.11 non-text: note below) */
+.cat-card.teal   .cat-icon { background: var(--teal);   box-shadow: 0 5px 14px -4px var(--teal);   color: #fff; }
+.cat-card.orange .cat-icon { background: var(--orange); box-shadow: 0 5px 14px -4px var(--orange); color: #fff; }
+.cat-card.purple .cat-icon { background: var(--purple); box-shadow: 0 5px 14px -4px var(--purple); color: #fff; }
+.cat-card.blue   .cat-icon { background: var(--blue);   box-shadow: 0 5px 14px -4px var(--blue);   color: #fff; }
 .cat-icon svg { width: 22px; height: 22px; }
 .cat-title {
   font-size: 18px;
@@ -915,7 +938,7 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   gap: 6px;
 }
-.dept-card.orange .dept-cta { color: var(--orange-deep); }
+.dept-card.orange .dept-cta { color: var(--orange-text); }
 .dept-card.purple .dept-cta { color: var(--purple); }
 .dept-cta svg { width: 14px; height: 14px; }
 
@@ -1081,7 +1104,7 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   gap: 8px;
   font-weight: 700;
-  color: var(--orange-deep);
+  color: var(--orange-text);
   margin-bottom: 6px;
   font-size: 13px;
 }

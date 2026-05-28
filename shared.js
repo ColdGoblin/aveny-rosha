@@ -73,6 +73,7 @@
     ).join('');
 
     return `
+      <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
       <div class="site-strip">
         <div class="strip-lockup">
           <div class="strip-logo"><img src="logo-ministry-official.png" alt="מדינת ישראל · משרד החינוך" /></div>
@@ -83,7 +84,7 @@
           <span>מרחב למידה למנטורים</span>
         </div>
       </div>
-      <nav class="site-nav" aria-label="ניווט ראשי">
+      <nav class="site-nav" role="navigation" aria-label="ניווט ראשי">
         <div class="nav-brand">
           <img src="logo-mentors.png" alt="מנטורים למנהלים — אבני ראשה" class="nav-brand-logo" />
         </div>
