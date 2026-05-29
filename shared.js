@@ -108,7 +108,7 @@
             </div>
           </div>
           <div class="footer-right">
-            <div class="footer-meta">© ${new Date().getFullYear()} כל הזכויות שמורות</div>
+            <div class="footer-meta">© ${new Date().getFullYear()} כל הזכויות שמורות · <a href="accessibility.html" class="footer-a11y-link">הצהרת נגישות</a></div>
             <a href="https://idancard.lovable.app" target="_blank" rel="noopener" class="footer-built-by">
               <img src="logo-goblin.png" alt="Goblin Productions" class="footer-goblin-logo" />
               <span>נבנה על ידי <strong>Goblin Productions</strong></span>
