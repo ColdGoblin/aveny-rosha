@@ -1212,6 +1212,32 @@ button { font-family: inherit; cursor: pointer; }
 .footer-built-by strong { color: var(--ink); font-weight: 700; }
 .footer-a11y-link { color: var(--text-light); text-decoration: none; }
 .footer-a11y-link:hover { color: var(--teal-text); text-decoration: underline; }
+
+/* ── Accessibility statement feature list ── */
+.a11y-feature-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+.a11y-feature-list li {
+  padding: 16px 20px;
+  background: var(--surface);
+  border-radius: 10px;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text-mid);
+  border-right: 3px solid var(--teal);
+}
+.a11y-feature-list li strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
 .footer-goblin-logo {
   width: 28px;
   height: 28px;
