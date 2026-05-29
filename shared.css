@@ -55,6 +55,14 @@
   --radius-xs:    8px;
 }
 
+/* ── Global keyboard focus ring (WCAG 2.4.7 / 2.4.11) ───── */
+:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
 /* ── Skip-to-content link (WCAG 2.4.1) ───────────────────── */
 .skip-link {
   position: absolute;

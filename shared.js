@@ -125,6 +125,8 @@
       const name = el.getAttribute('data-icon');
       if (I[name] && !el.firstElementChild) {
         el.innerHTML = I[name];
+        const svg = el.querySelector('svg');
+        if (svg) { svg.setAttribute('aria-hidden', 'true'); svg.setAttribute('focusable', 'false'); }
       }
     });
   }
@@ -171,14 +173,15 @@
 
       // Add view + download action buttons
       if (href) {
+        const fileName = el.querySelector('.file-name')?.textContent?.trim() || 'קובץ';
         const actions = document.createElement('div');
         actions.className = 'file-actions';
 
         // External URL (Canva, YouTube, etc.) → open directly, no viewer wrapping
         if (href.startsWith('http://') || href.startsWith('https://')) {
           actions.innerHTML = `
-            <a href="${href}" target="_blank" rel="noopener noreferrer" class="file-btn file-view-btn" aria-label="פתח לצפייה">
-              ${I.eye}<span>פתח</span>
+            <a href="${href}" target="_blank" rel="noopener noreferrer" class="file-btn file-view-btn" aria-label="פתח: ${fileName} (נפתח בחלון חדש)">
+              ${I.eye}<span aria-hidden="true">פתח</span>
             </a>
           `;
         } else {
@@ -202,14 +205,20 @@
           }
 
           actions.innerHTML = `
-            <a href="${viewUrl}" target="_blank" rel="noopener" class="file-btn file-view-btn" aria-label="פתח לצפייה">
-              ${I.eye}<span>צפייה</span>
+            <a href="${viewUrl}" target="_blank" rel="noopener" class="file-btn file-view-btn" aria-label="פתח לצפייה: ${fileName} (נפתח בחלון חדש)">
+              ${I.eye}<span aria-hidden="true">צפייה</span>
             </a>
-            <a href="${href}" download class="file-btn file-dl-btn" aria-label="הורד קובץ">
-              ${I.download}<span>הורדה</span>
+            <a href="${href}" download class="file-btn file-dl-btn" aria-label="הורד קובץ: ${fileName}">
+              ${I.download}<span aria-hidden="true">הורדה</span>
             </a>
           `;
         }
+
+        // Hide decorative SVGs inside action buttons from screen readers
+        actions.querySelectorAll('svg').forEach(s => {
+          s.setAttribute('aria-hidden', 'true');
+          s.setAttribute('focusable', 'false');
+        });
 
         el.appendChild(actions);
       }
