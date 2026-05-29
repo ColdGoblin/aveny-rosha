@@ -1170,10 +1170,35 @@ button { font-family: inherit; cursor: pointer; }
 }
 .footer-brand img { height: 36px; width: auto; opacity: .8; }
 .footer-brand strong { color: var(--ink); font-weight: 700; display: block; font-size: 14px; }
+.footer-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
 .footer-meta {
   font-size: 12px;
   color: var(--text-light);
   text-align: right;
+}
+.footer-built-by {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-light);
+  opacity: .75;
+  transition: opacity .2s;
+  text-decoration: none;
+}
+.footer-built-by:hover { opacity: 1; }
+.footer-built-by strong { color: var(--text-mid); font-weight: 700; }
+.footer-goblin-logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 /* ═══════════════════════════════════════════════════════════
