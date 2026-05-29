@@ -619,6 +619,17 @@ button { font-family: inherit; cursor: pointer; }
   50%       { opacity: 1;  transform: scale(1.1); }
 }
 
+.hero-logo {
+  display: block;
+  height: 90px;
+  width: auto;
+  margin: 0 auto 28px;
+  object-fit: contain;
+  position: relative;
+  filter: brightness(0) invert(1);   /* white on dark hero */
+  opacity: .92;
+}
+
 .home-title {
   font-size: 56px;
   font-weight: 900;
