@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -12,11 +12,11 @@
 
   <header class="page-header" data-accent="orange">
     <button onclick="history.back()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-mid,#666);padding:0 0 12px 0;display:flex;align-items:center;gap:6px;direction:rtl;" aria-label="חזרה לדף הקודם">&#x2192; חזרה</button>
-    <div class="breadcrumb">
+    <nav class="breadcrumb" aria-label="נתיב ניווט">
       <a href="index.html">דף הבית</a>
       <span class="sep">›</span>
       <span>מסלול מנהלים</span>
-    </div>
+    </nav>
     <span class="page-eyebrow"><span data-icon="principals"></span>מסלול ייעודי</span>
     <h1>מסלול מנהלים</h1>
     <p class="page-desc">מצגות לפי נושא, סמינר וימי עיון, וחומרים ייחודיים למסלול.</p>
@@ -40,7 +40,7 @@
     <div class="section-group">
       <div class="section-group-title">
         <div class="sec-ico" data-tone="orange" data-icon="clipboard"></div>
-        <div class="sec-text"><strong>סקירת קורס</strong><span>מסגרת ההכשרה ומכתב פתיחה</span></div>
+        <div class="sec-text"><h2>סקירת קורס</h2><span>מסגרת ההכשרה ומכתב פתיחה</span></div>
         <span class="sec-count">1 קובץ</span>
       </div>
       <div class="file-grid">
@@ -57,7 +57,7 @@
     <div class="section-group">
       <div class="section-group-title">
         <div class="sec-ico" data-tone="orange" data-icon="presentation"></div>
-        <div class="sec-text"><strong>מפגשים לפי נושא</strong><span>תוכן נושאי לאורך המסלול</span></div>
+        <div class="sec-text"><h2>מפגשים לפי נושא</h2><span>תוכן נושאי לאורך המסלול</span></div>
         <span class="sec-count">10 נושאים</span>
       </div>
 
@@ -370,7 +370,7 @@
     <div class="section-group">
       <div class="section-group-title">
         <div class="sec-ico" data-tone="blue" data-icon="school"></div>
-        <div class="sec-text"><strong>סמינר וימי עיון</strong><span>אירועים ומפגשי העשרה</span></div>
+        <div class="sec-text"><h2>סמינר וימי עיון</h2><span>אירועים ומפגשי העשרה</span></div>
         <span class="sec-count">3 קבצים</span>
       </div>
       <div class="file-grid">
@@ -397,7 +397,7 @@
     <div class="section-group">
       <div class="section-group-title">
         <div class="sec-ico" data-tone="orange" data-icon="pin"></div>
-        <div class="sec-text"><strong>חומרים ייחודיים למסלול</strong><span>תוכן בלעדי למסלול מנהלים</span></div>
+        <div class="sec-text"><h2>חומרים ייחודיים למסלול</h2><span>תוכן בלעדי למסלול מנהלים</span></div>
         <span class="sec-count">1 קובץ</span>
       </div>
       <div class="file-grid">
@@ -418,3 +418,4 @@
   <script>Site.mount('principals');</script>
 </body>
 </html>
+

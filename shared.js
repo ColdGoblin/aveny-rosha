@@ -72,7 +72,7 @@
 
     return `
       <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
-      <div class="site-strip">
+      <header class="site-strip" role="banner">
         <div class="strip-lockup">
           <div class="strip-logo"><img src="logo-ministry-official.png" alt="מדינת ישראל · משרד החינוך" /></div>
           <div class="strip-logo"><a href="https://avneyrosha.org.il/" target="_blank" rel="noopener"><img src="logo-avney-rosha-official.png" alt="אבני ראשה — המכון הישראלי למנהיגות בית ספרית" /></a></div>
@@ -81,7 +81,7 @@
           ${I.sparkle}
           <span>מרחב למידה למנטורים</span>
         </div>
-      </div>
+      </header>
       <nav class="site-nav" role="navigation" aria-label="ניווט ראשי">
         <div class="nav-brand">
           <a href="index.html"><img src="logo-mentors.png" alt="מנטורים למנהלים — אבני ראשה" class="nav-brand-logo" /></a>
@@ -98,7 +98,7 @@
   // ── Render footer ───────────────────────────────────────
   function renderFooter() {
     return `
-      <div class="site-footer">
+      <footer class="site-footer" role="contentinfo">
         <div class="site-footer-inner">
           <div class="footer-brand">
             <img src="logo-avney-rosha-official.png" alt="אבני ראשה" />
@@ -115,7 +115,7 @@
             </a>
           </div>
         </div>
-      </div>
+      </footer>
     `;
   }
 
@@ -265,6 +265,34 @@
     });
   }
 
+  // ── Upgrade accordion div→button for keyboard/ARIA access ─
+  function initAccordion() {
+    let counter = 0;
+    document.querySelectorAll('.acc-item').forEach(item => {
+      const header = item.querySelector('.acc-header');
+      if (!header || header.tagName === 'BUTTON') return;
+
+      const body   = item.querySelector('.acc-body');
+      const bodyId = 'acc-body-' + (++counter);
+      if (body) body.id = bodyId;
+
+      const btn = document.createElement('button');
+      btn.className = header.className;
+      btn.type = 'button';
+      btn.setAttribute('aria-expanded', item.classList.contains('open') ? 'true' : 'false');
+      if (body) btn.setAttribute('aria-controls', bodyId);
+
+      while (header.firstChild) btn.appendChild(header.firstChild);
+
+      btn.addEventListener('click', function () {
+        const isOpen = item.classList.toggle('open');
+        this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      header.parentNode.replaceChild(btn, header);
+    });
+  }
+
   // ── Public mount(activePage) ────────────────────────────
   const Site = {
     icons: I,
@@ -278,16 +306,19 @@
       decorateFileDocs(document);
       decorateFileCards(document);
       initHamburger();
+      initAccordion();
     },
     populateIcons,
     decorateFileDocs,
     decorateFileCards
   };
 
-  // ── Accordion helper (sessions / topics) ────────────────
+  // ── Accordion toggle (legacy onclick support) ────────────
   Site.toggle = function (header) {
     const item = header.closest('.acc-item');
-    if (item) item.classList.toggle('open');
+    if (!item) return;
+    const isOpen = item.classList.toggle('open');
+    if (header.tagName === 'BUTTON') header.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   };
 
   // ── Lightbox (used by principals) ───────────────────────

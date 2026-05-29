@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -12,11 +12,11 @@
 
   <header class="page-header" data-accent="purple">
     <button onclick="history.back()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-mid,#666);padding:0 0 12px 0;display:flex;align-items:center;gap:6px;direction:rtl;" aria-label="חזרה לדף הקודם">&#x2192; חזרה</button>
-    <div class="breadcrumb">
+    <nav class="breadcrumb" aria-label="נתיב ניווט">
       <a href="index.html">דף הבית</a>
       <span class="sep">›</span>
       <span>משחקים קטנים</span>
-    </div>
+    </nav>
     <span class="page-eyebrow"><span data-icon="game"></span>למידה פעילה</span>
     <h1>משחקים קטנים למנטורים</h1>
     <p class="page-desc">תרגול מושגים ועקרונות מנטורינג בצורה שובת לב — לבד, בזוגות או בקבוצה.</p>
@@ -40,7 +40,7 @@
     <div class="section-group">
       <div class="section-group-title">
         <div class="sec-ico" data-tone="purple" data-icon="game"></div>
-        <div class="sec-text"><strong>מושגי מנטורינג וראפור</strong><span>Padlet Arcade · שאלות ידע</span></div>
+        <div class="sec-text"><h2>מושגי מנטורינג וראפור</h2><span>Padlet Arcade · שאלות ידע</span></div>
         <span class="sec-count">משחק 1</span>
       </div>
       <div style="margin-top:16px; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);">
@@ -60,7 +60,7 @@
     <div class="section-group">
       <div class="section-group-title">
         <div class="sec-ico" data-tone="purple" data-icon="game"></div>
-        <div class="sec-text"><strong>עולם המנטורינג</strong><span>Padlet Arcade · שאלות ידע</span></div>
+        <div class="sec-text"><h2>עולם המנטורינג</h2><span>Padlet Arcade · שאלות ידע</span></div>
         <span class="sec-count">משחק 2</span>
       </div>
       <div style="margin-top:16px; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);">
@@ -84,3 +84,4 @@
   <script>Site.mount('games');</script>
 </body>
 </html>
+

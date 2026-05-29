@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -12,11 +12,11 @@
 
   <header class="page-header" data-accent="green">
     <button onclick="history.back()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-mid,#666);padding:0 0 12px 0;display:flex;align-items:center;gap:6px;direction:rtl;" aria-label="חזרה לדף הקודם">&#x2192; חזרה</button>
-    <div class="breadcrumb">
+    <nav class="breadcrumb" aria-label="נתיב ניווט">
       <a href="index.html">דף הבית</a>
       <span class="sep">›</span>
       <span>הרשמה לתכנית</span>
-    </div>
+    </nav>
     <span class="page-eyebrow"><span data-icon="sparkle"></span>הצטרפות לתכנית</span>
     <h1>הרשמה לתכנית</h1>
     <p class="page-desc">מידע על תכנית ההכשרה למנטורים ואופן ההרשמה.</p>
@@ -40,7 +40,7 @@
     <div class="section-group">
       <div class="section-group-title">
         <div class="sec-ico" data-tone="green" data-icon="presentation"></div>
-        <div class="sec-text"><strong>סרטון הכרות עם התכנית</strong><span>מבט על מטרות ומבנה ההכשרה</span></div>
+        <div class="sec-text"><h2>סרטון הכרות עם התכנית</h2><span>מבט על מטרות ומבנה ההכשרה</span></div>
       </div>
       <div style="margin: 16px 0; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #000;">
         <div style="position: relative; padding-top: 56.25%;">
@@ -59,7 +59,7 @@
     <div class="section-group">
       <div class="section-group-title">
         <div class="sec-ico" data-tone="green" data-icon="sparkle"></div>
-        <div class="sec-text"><strong>הרשמה לתכנית</strong><span>דרך אתר אבני ראשה</span></div>
+        <div class="sec-text"><h2>הרשמה לתכנית</h2><span>דרך אתר אבני ראשה</span></div>
       </div>
       <div style="padding: 24px 0 8px;">
         <a
@@ -87,3 +87,4 @@
   <script>Site.mount('registration');</script>
 </body>
 </html>
+

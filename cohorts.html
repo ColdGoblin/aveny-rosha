@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -27,11 +27,11 @@
 
   <header class="page-header" data-accent="teal">
     <button onclick="history.back()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;color:var(--text-mid,#666);padding:0 0 12px 0;display:flex;align-items:center;gap:6px;direction:rtl;" aria-label="חזרה לדף הקודם">&#x2192; חזרה</button>
-    <div class="breadcrumb">
+    <nav class="breadcrumb" aria-label="נתיב ניווט">
       <a href="index.html">דף הבית</a>
       <span class="sep">›</span>
       <span>מחזורים</span>
-    </div>
+    </nav>
     <span class="page-eyebrow"><span data-icon="cohorts"></span>קבוצות המשתתפים</span>
     <h1>מחזורים</h1>
     <p class="page-desc">פרטי המחזורים הפעילים של תכנית המנטורים.</p>
@@ -44,7 +44,7 @@
     <div class="section-group">
       <div class="section-group-title">
         <div class="sec-ico" data-tone="teal" data-icon="cohorts"></div>
-        <div class="sec-text"><strong>מחזור א׳ מנהלים</strong><span>תשפ"ו · 2025–2026</span></div>
+        <div class="sec-text"><h2>מחזור א׳ מנהלים</h2><span>תשפ"ו · 2025–2026</span></div>
         <span class="sec-count">מחזור 1</span>
       </div>
       <div class="cohort-embed-wrap" style="margin-top:16px;">
@@ -65,3 +65,4 @@
   <script>Site.mount('cohorts');</script>
 </body>
 </html>
+
