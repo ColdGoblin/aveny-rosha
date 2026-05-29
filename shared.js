@@ -107,13 +107,22 @@
               אבני ראשה — המכון הישראלי למנהיגות בית ספרית · משרד החינוך
             </div>
           </div>
-          <div class="footer-right">
-            <div class="footer-meta">© ${new Date().getFullYear()} כל הזכויות שמורות · <a href="accessibility.html" class="footer-a11y-link">הצהרת נגישות</a> · <a href="privacy.html" class="footer-a11y-link">מדיניות פרטיות</a> · <a href="terms.html" class="footer-a11y-link">תנאי שימוש</a></div>
-            <a href="https://idancard.lovable.app" target="_blank" rel="noopener" class="footer-built-by">
-              <img src="logo-goblin.png" alt="Goblin Productions" class="footer-goblin-logo" />
-              <span>נבנה על ידי <strong>Goblin Productions</strong></span>
-            </a>
-          </div>
+        </div>
+        <div class="footer-legal-bar">
+          <span class="footer-copy">© ${new Date().getFullYear()} כל הזכויות שמורות</span>
+          <nav class="footer-legal-links" aria-label="קישורים משפטיים">
+            <a href="accessibility.html">הצהרת נגישות</a>
+            <span aria-hidden="true">·</span>
+            <a href="privacy.html">מדיניות פרטיות</a>
+            <span aria-hidden="true">·</span>
+            <a href="terms.html">תנאי שימוש</a>
+          </nav>
+        </div>
+        <div class="footer-built-bar">
+          <a href="https://idancard.lovable.app" target="_blank" rel="noopener" class="footer-built-by">
+            <img src="logo-goblin.png" alt="Goblin Productions" class="footer-goblin-logo" />
+            <span>נבנה על ידי <strong>Goblin Productions</strong></span>
+          </a>
         </div>
       </footer>
     `;
