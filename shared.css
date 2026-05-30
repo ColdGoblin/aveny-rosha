@@ -201,10 +201,10 @@ button { font-family: inherit; cursor: pointer; }
   color: var(--text-mid);
   white-space: normal;
   text-align: right;
-  transition: background .15s, color .15s, border-color .15s;
+  transition: background .2s, color .2s, border-color .2s, transform .2s;
   border-right: 3px solid transparent;
 }
-.nav-links a:hover { color: var(--ink); background: #eef2f7; }
+.nav-links a:hover { color: var(--ink); background: #eef2f7; transform: translateX(2px); }
 .nav-links a.active {
   color: var(--teal-text);
   font-weight: 700;
@@ -485,6 +485,8 @@ button { font-family: inherit; cursor: pointer; }
   border: 1.5px solid transparent;
   line-height: 1;
 }
+.file-btn:hover { transform: translateY(-1px); box-shadow: 0 3px 8px rgba(15,23,38,.1); }
+.file-btn:active { transform: scale(0.95); box-shadow: none; }
 .file-btn svg { width: 14px; height: 14px; flex-shrink: 0; }
 .file-view-btn {
   background: var(--teal-tint);
@@ -560,7 +562,9 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1;
   position: relative;
   z-index: 1;
+  transition: transform .2s ease;
 }
+.file-card:hover .file-doc-badge { transform: scale(1.1); }
 .file-doc[data-type="pdf"]   { --doc-color: #c0392b; }
 .file-doc[data-type="doc"],
 .file-doc[data-type="docx"]  { --doc-color: #2b6cb0; }
@@ -885,6 +889,7 @@ button { font-family: inherit; cursor: pointer; }
   border-radius: 11px;
   color: #fff;
   display: flex;
+  transition: transform .22s ease;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
@@ -918,6 +923,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .cat-link svg { width: 14px; height: 14px; }
 .cat-card:hover .cat-link { gap: 10px; }
+.cat-card:hover .cat-icon { transform: scale(1.12); }
 
 /* Department cards (principals / supervisors) */
 .dept-grid {
@@ -1269,7 +1275,33 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   10 · RESPONSIVE
+   10 · ANIMATIONS & INTERACTIVITY
+═══════════════════════════════════════════════════════════ */
+@keyframes section-fade-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.content-area .section-group {
+  animation: section-fade-in .42s ease both;
+}
+.content-area .section-group:nth-child(1) { animation-delay: .04s; }
+.content-area .section-group:nth-child(2) { animation-delay: .10s; }
+.content-area .section-group:nth-child(3) { animation-delay: .16s; }
+.content-area .section-group:nth-child(4) { animation-delay: .22s; }
+.content-area .section-group:nth-child(5) { animation-delay: .28s; }
+.content-area .section-group:nth-child(6) { animation-delay: .34s; }
+.content-area .section-group:nth-child(7) { animation-delay: .40s; }
+.content-area .section-group:nth-child(8) { animation-delay: .46s; }
+
+/* כבד הסרת אנימציות למי שמבקש */
+@media (prefers-reduced-motion: reduce) {
+  .content-area .section-group { animation: none; }
+  .acc-body { transition: none; }
+  .cat-icon, .file-doc-badge, .file-btn { transition: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   11 · RESPONSIVE
 ═══════════════════════════════════════════════════════════ */
 @media (max-width: 1100px) {
   .home-title { font-size: 44px; }
