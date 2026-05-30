@@ -1377,15 +1377,24 @@ button { font-family: inherit; cursor: pointer; }
     font-size: 13px;
   }
 
-  /* Section group title: allow wrap on very small screens */
+  /* Page intro: reduce horizontal padding on narrow screens */
+  .page-intro { padding: 20px 18px; }
+
+  /* Section group title: allow wrap, keep count badge from stretching */
   .section-group-title { flex-wrap: wrap; gap: 10px; }
+  .sec-count { flex-shrink: 0; align-self: flex-start; }
+
+  /* Full-width CTA buttons (e.g. registration page) */
+  .mobile-cta-full { display: flex !important; width: 100%; justify-content: center; box-sizing: border-box; }
 
   /* Photo grid */
   .photo-grid { grid-template-columns: repeat(2, 1fr); }
 
-  /* Footer */
+  /* Footer: wrap logo + text row, stack legal links */
   .site-footer { padding: 24px 16px 20px; }
   .site-footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer-brand { flex-wrap: wrap; gap: 10px; }
+  .footer-legal-bar { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 
 @media (max-width: 480px) {
@@ -1393,8 +1402,16 @@ button { font-family: inherit; cursor: pointer; }
   .page-header h1 { font-size: 22px; }
   .quote-mark { display: none; } /* reclaim horizontal space on very small screens */
   .photo-grid { grid-template-columns: 1fr; }
-  /* File buttons: full width on smallest screens */
-  .file-actions { flex-direction: column; width: 100%; }
-  .file-btn { width: 100%; }
-  /* Feature card CTA full width already handled above */
+
+  /* Strip logos: slightly smaller on very small phones */
+  .strip-logo img { height: 36px; }
+
+  /* File card: wrap so actions drop below icon+title instead of squeezing the text */
+  .file-card { flex-wrap: wrap; }
+  .file-info { min-width: 0; flex: 1 1 0; }
+  .file-actions { flex-direction: row; width: 100%; gap: 8px; }
+  .file-btn { flex: 1; width: auto; }
+
+  /* Section title: shrink h2 slightly so sec-count doesn't crowd */
+  .sec-text h2 { font-size: 17px; }
 }
