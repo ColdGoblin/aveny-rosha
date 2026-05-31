@@ -19,6 +19,39 @@
       height: 800px;
       border: none;
     }
+    .cohort-video-block {
+      margin-top: 16px;
+      margin-bottom: 24px;
+    }
+    .cohort-video-label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--teal, #2a9d8f);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cohort-video-label::before {
+      content: "▶";
+      font-size: 11px;
+    }
+    .cohort-video-ratio {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #000;
+    }
+    .cohort-video-ratio iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -34,7 +67,7 @@
     </nav>
     <span class="page-eyebrow"><span data-icon="cohorts"></span>קבוצות המשתתפים</span>
     <h1>מחזורים</h1>
-    <p class="page-desc">פרטי המחזורים הפעילים של תכנית המנטורים.</p>
+
     <div class="page-header-bar bar-teal"></div>
   </header>
 
@@ -47,6 +80,19 @@
         <div class="sec-text"><h2>מחזור א׳ מנהלים</h2><span>תשפ"ו · 2025–2026</span></div>
         <span class="sec-count">מחזור 1</span>
       </div>
+      <div class="cohort-video-block">
+        <div class="cohort-video-label">סרטון סיום</div>
+        <div class="cohort-video-ratio">
+          <iframe
+            src="https://drive.google.com/file/d/1j-fAl5zZQpD3q_eRk2x3bJNfvkUcOzjj/preview"
+            title="סרטון סיום — מחזור א׳ מנהלים"
+            allow="autoplay; fullscreen"
+            loading="lazy"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+
       <div class="cohort-embed-wrap" style="margin-top:16px;">
         <iframe
           src="https://avneyrosha.org.il/mentors-program-2026/"
