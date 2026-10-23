@@ -124,6 +124,7 @@
             <span>נבנה על ידי <strong>Goblin Productions</strong></span>
           </a>
         </div>
+      <div class="goblin-tech-credit" dir="rtl"><span>נוצר ומתוחזק על ידי</span><img src="goblin-logo-640.jpg" alt="" width="32" height="32" loading="lazy"><bdi dir="ltr">Goblin Tech</bdi></div>
       </footer>
     `;
   }
